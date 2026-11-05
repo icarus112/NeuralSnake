@@ -1,3 +1,5 @@
+namespace SnakeTasks.Game;
+
 public class GameStats
 {
     public int Score { get; private set; }

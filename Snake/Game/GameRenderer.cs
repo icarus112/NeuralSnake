@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace SnakeGame;
+namespace SnakeTasks.Game;
 
 public class GameRenderer
 {

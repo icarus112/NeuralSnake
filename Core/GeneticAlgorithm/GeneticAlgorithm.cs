@@ -1,4 +1,4 @@
-using SnakeGame;
+namespace Core.GeneticAlgorithm;
 
 public class GeneticAlgorithm
 {

@@ -1,4 +1,6 @@
-namespace SnakeGame;
+using SnakeTasks.Game;
+
+namespace SnakeTasks.AI;
 
 public class SnakeEvaluator
 {

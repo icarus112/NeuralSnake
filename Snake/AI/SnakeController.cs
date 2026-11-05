@@ -1,6 +1,9 @@
-namespace SnakeGame;
+using SnakeTasks.Game;
 
-public class AIController
+namespace SnakeTasks.AI;
+
+
+public class SnakeController
 {
 
     public Direction GetDirection(Direction curdir, int action)

@@ -1,3 +1,5 @@
+namespace Actioner.Models;
+
 public class Project
 {
     public double Cost{get; private set;}
@@ -10,7 +12,7 @@ public class Project
         if (cost <= 0)
             throw new ArgumentException("Стоимость проекта не может быть отрицательной.");
         
-        if (profit < 0)
+        if (profit <= 0)
             throw new ArgumentException("Прибыль проекта не может быть отрицательной.");
         
         if (successProbability < 0 || successProbability > 1)
@@ -20,5 +22,4 @@ public class Project
         Profit = profit;
         SuccessProbability = successProbability;
     }
-
 }

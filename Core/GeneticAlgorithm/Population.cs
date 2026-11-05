@@ -1,4 +1,6 @@
-namespace SnakeGame;
+using SnakeTasks.AI;
+
+namespace Core.GeneticAlgorithm;
 
 public class Population
 {

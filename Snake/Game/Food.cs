@@ -1,3 +1,5 @@
+namespace SnakeTasks.Game;
+
 public class Food
 {
     public int X { get; private set; }

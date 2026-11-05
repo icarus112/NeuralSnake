@@ -1,5 +1,7 @@
 using System.Text.Json;
-namespace SnakeGame;
+using Core.Neural;
+
+namespace Core.ModelStorage;
 
 public class ModelData
 {

@@ -1,4 +1,4 @@
-namespace SnakeGame;
+namespace SnakeTasks.Game;
 
 // Для запоминания направления движения змейки
 public enum Direction

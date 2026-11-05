@@ -1,5 +1,9 @@
 ﻿using Raylib_cs;
-using SnakeGame;
+using SnakeTasks.AI;
+using SnakeTasks.Game;
+using Core.Neural;
+using Core.ModelStorage;
+
 
 class Program
 {
@@ -44,7 +48,7 @@ class Program
         GameRenderer renderer = new GameRenderer(cellSize, gridSize);
         GameObservation observation = new GameObservation();
         GameEngine game = new GameEngine(cellSize, gridSize);
-        AIController aiController = new AIController();
+        SnakeController aiController = new SnakeController();
 
         // Загрузка нейронной сети
         NeuralNetwork bestNetwork = ModelStorage.Load("/SnakeModels/Model_5/best_snake_300.json");
@@ -126,11 +130,11 @@ class Program
 
         int index = 0;
 
-        foreach (var pj in Projects)
-        {
-            inputs[index++] = pj.Cost;
-            inputs[index++] = pj.Profit;
-            inputs[index++] = pj.SuccessProbability;
-        }
+        // foreach (var pj in Projects)
+        // {
+        //     inputs[index++] = pj.Cost;
+        //     inputs[index++] = pj.Profit;
+        //     inputs[index++] = pj.SuccessProbability;
+        // }
     }
 }

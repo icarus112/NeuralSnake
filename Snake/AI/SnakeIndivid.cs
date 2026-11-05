@@ -1,4 +1,9 @@
-namespace SnakeGame;
+using Core.Neural;
+using SnakeTasks.Game;
+using Core.GeneticAlgorithm;
+
+namespace SnakeTasks.AI;
+
 
 public class Individ
 {
@@ -15,7 +20,7 @@ public class Individ
 class IndividEvaluator
 {
     private readonly GameObservation observation = new();
-    private readonly AIController controller = new();
+    private readonly SnakeController controller = new();
     private readonly SnakeEvaluator fitnessEvaluator = new();
 
     // запуск игровой сессии с нейронкой и вычисление Fitness

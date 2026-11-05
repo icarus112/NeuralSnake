@@ -1,4 +1,4 @@
-namespace SnakeGame;
+namespace Core.Neural;
 
 public class Neuron
 {

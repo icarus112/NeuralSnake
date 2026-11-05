@@ -1,4 +1,8 @@
-using SnakeGame;
+using Core.Neural;
+using Core.GeneticAlgorithm;
+using Core.ModelStorage;
+
+namespace SnakeTasks.AI;
 
 public class SnakeTrain
 {

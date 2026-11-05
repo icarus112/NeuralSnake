@@ -1,4 +1,4 @@
-using SnakeGame;
+namespace SnakeTasks.Game;
 
 public class GameEngine
 {
