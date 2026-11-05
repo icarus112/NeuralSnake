@@ -21,3 +21,4 @@
 /media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/obj/Debug/net8.0/NeuronSnake.pdb
 /media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/obj/Debug/net8.0/NeuronSnake.genruntimeconfig.cache
 /media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/obj/Debug/net8.0/ref/NeuronSnake.dll
+/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/obj/Debug/net8.0/NeuronSnake.sourcelink.json

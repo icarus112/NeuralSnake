@@ -4,14 +4,12 @@ public class Population
 {
     private readonly List<Individ> individs = new();
     public IReadOnlyList<Individ> Individuals => individs;
-
     public int Count => individs.Count;
-
-    public Population(int PopulationSize)
+    public Population(int PopulationSize, int[] layers)
     {
         for (int i = 0; i < PopulationSize; i++)
         {
-            individs.Add(new Individ());
+            individs.Add(new Individ(layers));
         }
     }
 

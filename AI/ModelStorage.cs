@@ -1,15 +1,25 @@
 using System.Text.Json;
 namespace SnakeGame;
+
+public class ModelData
+{
+    public int[] Layers { get; set; } = Array.Empty<int>();
+    public double[] Genome { get; set; } = Array.Empty<double>();
+}
 public static class ModelStorage
 {
-    public static void Save(
-        NeuralNetwork network,
-        string path
-    )
+    public static void Save(NeuralNetwork network, string path)
     {
-        double[] genome = network.GetGenome();
+        ModelData model = new ModelData
+        {
+            Layers = network.GetArchitecture(),
+            Genome = network.GetGenome()
+        };
 
-        string json = JsonSerializer.Serialize(genome);
+        string json = JsonSerializer.Serialize(
+            model,
+            new JsonSerializerOptions { WriteIndented = true }
+        );
 
         File.WriteAllText(path, json);
     }
@@ -18,12 +28,12 @@ public static class ModelStorage
     {
         string json = File.ReadAllText(path);
 
-        double[] genome = JsonSerializer.Deserialize<double[]>(json)
-            ?? throw new InvalidDataException("Invalid genome file");
+        ModelData model = JsonSerializer.Deserialize<ModelData>(json)
+            ?? throw new InvalidDataException("Invalid model file");
 
-        NeuralNetwork network = new NeuralNetwork();
+        NeuralNetwork network = new NeuralNetwork(model.Layers);
 
-        network.SetGenome(genome);
+        network.SetGenome(model.Genome);
 
         return network;
     }

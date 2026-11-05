@@ -5,9 +5,9 @@ public class Individ
     public NeuralNetwork Network {get;}
     public double Fitness {get; set;}
 
-    public Individ()
+    public Individ(int[] layers)
     {
-        Network = new NeuralNetwork();
+        Network = new NeuralNetwork(layers);
         Fitness = 0;
     }
 }

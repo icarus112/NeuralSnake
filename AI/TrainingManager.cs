@@ -8,58 +8,84 @@ public class TrainingManager
     public NeuralNetwork Train(
         int generations,
         int populationSize,
-        int numOfSaves)
+        int numOfSaves,
+        int[] layers)
     {
-        int generation = 0;
-        int gap = generations / numOfSaves;
-        int count = 0;
+        if (generations <= 0)
+            throw new ArgumentException("Количество поколений должно быть положительным.");
 
-        Population population = new Population(populationSize);
+        if (numOfSaves <= 0)
+            throw new ArgumentException("Количество сохранений должно быть положительным.");
+
+        int generation = 0;
+
+        double bestFitnessEver = double.NegativeInfinity;
+
         NeuralNetwork? bestNetwork = null;
-       
-        while(generation < generations)
+
+        Population population = new Population(populationSize, layers);
+
+        Directory.CreateDirectory("Model_3");
+
+        int saveTarget = Math.Min(numOfSaves, generations);
+        int savesDone = 0;
+
+        while (generation < generations)
         {
             evaluator.EvaluatePopulation(population);
-            
-            int bestFitness = 0;
+
             Individ bestIndivid = population.Individuals
-            .MaxBy(individ => individ.Fitness)!;
+                .MaxBy(individ => individ.Fitness)!;
+
             double avgFitness = population.Individuals
-            .Average(individ => individ.Fitness);
-            double bestFitnessEver = double.NegativeInfinity;
-            
+                .Average(individ => individ.Fitness);
+
+            // Проверяем лучший результат за всё время обучения.
             if (bestIndivid.Fitness > bestFitnessEver)
             {
                 bestFitnessEver = bestIndivid.Fitness;
-                bestNetwork = new NeuralNetwork();
+
+                bestNetwork = new NeuralNetwork(layers);
+
                 bestNetwork.SetGenome(
                     bestIndivid.Network.GetGenome()
                 );
             }
-            
-            Console.WriteLine($"GNR: {generation+1} |" +
-            $"Best: {bestIndivid.Fitness} |" +
-            $"Avg: {avgFitness}");
 
-            if(generation < generations - 1)
+            Console.WriteLine(
+                $"GNR: {generation + 1} | " +
+                $"Best: {bestIndivid.Fitness:F2} | " +
+                $"Best Ever: {bestFitnessEver:F2} | " +
+                $"Avg: {avgFitness:F2}"
+            );
+
+            // Создаём следующее поколение.
+            if (generation < generations - 1)
             {
-                population = geneticAlgorithm.NextGeneration(population, 5, 5, 0.1, 0.1);
+                population = geneticAlgorithm.NextGeneration(
+                    population, 5, 5, 0.1, 0.1
+                );
             }
- 
-            if(count >= gap || generation == generations - 1)
+
+            // Определяем, пора ли сохранять модель.
+            int nextSaveGeneration = (int)Math.Ceiling(
+                (savesDone + 1.0) * generations / saveTarget
+            );
+
+            if (generation + 1 >= nextSaveGeneration)
             {
                 ModelStorage.Save(
-                    bestIndivid.Network,
-                    $"Model_3/best_snake_{generation}.json"
+                    bestNetwork!,
+                    $"Model_3/best_snake_{generation + 1}.json"
                 );
-                count = 0;
+
+                savesDone++;
             }
 
             generation++;
-            count++;
+        }
 
-        }   
-
-        return bestNetwork;            
+        return bestNetwork
+            ?? throw new InvalidOperationException("Обучение не завершилось успешно.");
     }
 }
