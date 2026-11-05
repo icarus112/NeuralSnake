@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NeuronSnake")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f462b2eeee0dece33bcaf3fc8e41320578581c85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0515f71f816a6d2ba48c9889975501da2352798d")]
 [assembly: System.Reflection.AssemblyProductAttribute("NeuronSnake")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NeuronSnake")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

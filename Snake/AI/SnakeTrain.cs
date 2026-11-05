@@ -1,6 +1,6 @@
 using SnakeGame;
 
-public class TrainingManager
+public class SnakeTrain
 {
     private readonly GeneticAlgorithm geneticAlgorithm = new();
     private readonly IndividEvaluator evaluator = new();
@@ -25,7 +25,7 @@ public class TrainingManager
 
         Population population = new Population(populationSize, layers);
 
-        Directory.CreateDirectory("Model_3");
+        Directory.CreateDirectory("/SnakeModels/Model_5");
 
         int saveTarget = Math.Min(numOfSaves, generations);
         int savesDone = 0;
@@ -63,7 +63,7 @@ public class TrainingManager
             if (generation < generations - 1)
             {
                 population = geneticAlgorithm.NextGeneration(
-                    population, 5, 5, 0.1, 0.1
+                    population, 5, 5, 0.3, 0.1
                 );
             }
 
@@ -76,7 +76,7 @@ public class TrainingManager
             {
                 ModelStorage.Save(
                     bestNetwork!,
-                    $"Model_3/best_snake_{generation + 1}.json"
+                    $"/SnakeModels/Model_5/best_snake_{generation + 1}.json"
                 );
 
                 savesDone++;

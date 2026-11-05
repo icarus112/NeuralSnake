@@ -2,6 +2,7 @@ namespace SnakeGame;
 
 public class AIController
 {
+
     public Direction GetDirection(Direction curdir, int action)
     {
         switch (curdir)

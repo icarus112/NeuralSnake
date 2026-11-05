@@ -5,26 +5,32 @@ class Program
 {
     static void Main(string[] args)
     {
-        int[] architecture = { 11, 16, 16, 3 };
 
-        // Загрузка нейронной сети
-        NeuralNetwork bestNetwork = ModelStorage.Load("Model_3/best_snake_300.json");
-
-        // Обучение нейронной сети
-        // TrainingManager trainingManager = new();
-
-        // trainingManager.Train(
-        //     generations: 300,
-        //     populationSize: 100,
-        //     numOfSaves: 4,
-        //     layers: architecture
-        // );
+        // TrainSnake();
 
         // Запуск игры
-        RunSnake(bestNetwork);
+        // RunSnake();
+        TrainActioner();
+
     }
 
-    static void RunSnake(NeuralNetwork bestNetwork)
+    static void TrainSnake()
+    {
+        int[] architecture = { 11, 16, 16, 3 };
+
+
+        // Обучение нейронной сети
+        SnakeTrain trainingManager = new();
+
+        trainingManager.Train(
+            generations: 300,
+            populationSize: 80,
+            numOfSaves: 6,
+            layers: architecture
+        );
+    }
+
+    static void RunSnake()
     {
         const int cellSize = 25;
         const int gridSize = 20;
@@ -39,6 +45,9 @@ class Program
         GameObservation observation = new GameObservation();
         GameEngine game = new GameEngine(cellSize, gridSize);
         AIController aiController = new AIController();
+
+        // Загрузка нейронной сети
+        NeuralNetwork bestNetwork = ModelStorage.Load("/SnakeModels/Model_5/best_snake_300.json");
 
         Raylib.InitWindow(width, height, "Neuron Snake");
         Raylib.SetTargetFPS(60);
@@ -105,5 +114,23 @@ class Program
         }
 
         Raylib.CloseWindow();
+    }
+
+    static void TrainActioner()
+    {
+        int maxProjects = 10;
+        int projectCount = 4;
+
+
+        double[] inputs = new double[maxProjects * 3 + 1];
+
+        int index = 0;
+
+        foreach (var pj in Projects)
+        {
+            inputs[index++] = pj.Cost;
+            inputs[index++] = pj.Profit;
+            inputs[index++] = pj.SuccessProbability;
+        }
     }
 }

@@ -55,10 +55,14 @@ public class GameObservation
             return true;
         }
 
-        return game.Snake.GetBody
-        .Skip(1)
-        .SkipLast(1)
-        .Any(segment => segment.X == x &&
-        segment.Y == y);
+        var body = game.Snake.GetBody;
+
+        for (int i = 1; i < body.Count - 1; i++)
+        {
+            if (body[i].X == x && body[i].Y == y)
+                return true;
+        }
+
+        return false;
     }
 }

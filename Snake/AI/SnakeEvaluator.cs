@@ -1,6 +1,6 @@
 namespace SnakeGame;
 
-public class FitnessEvaluator
+public class SnakeEvaluator
 {
     // для вычисление успешности нейронки по статистике
     public double Calculate(GameStats stats)
@@ -12,10 +12,15 @@ public class FitnessEvaluator
 
         // double fitness = 10*score + 0.00008 * steps + 0.01 * stats.FoodProgress;
 
-        double fitness = 10 * score 
-        + 0.00008 * steps 
-        + 0.1 * stats.FoodProgress
-        - 0.005 * stats.Turns;
+        // double fitness = 10 * score 
+        // + 0.00008 * steps 
+        // + 0.1 * stats.FoodProgress
+        // - 0.005 * stats.Turns;
+
+        double fitness =
+            10 * stats.Score
+            + 0.1 * stats.FoodProgress
+            - 0.5 * stats.HungerPenalty;
         return fitness;
     }
 }

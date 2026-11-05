@@ -5,6 +5,7 @@ public class GameStats
     public int StepsSinceFoods { get; private set; }
     public int Episode { get; private set; }
     public double FoodProgress{get; private set;}
+    public double HungerPenalty { get; private set; }
 
     public int Turns {get; private set;}
 
@@ -20,6 +21,14 @@ public class GameStats
     {
         Steps++;
         StepsSinceFoods++;
+
+        int allowedSteps = 30 + 5 * Score;
+
+        if (StepsSinceFoods > allowedSteps)
+        {
+            HungerPenalty +=
+                (double)(StepsSinceFoods - allowedSteps) / allowedSteps;
+        }
     }
 
     public void AddScore()
@@ -33,6 +42,9 @@ public class GameStats
         Score = 0;
         Steps = 0;
         StepsSinceFoods = 0;
+        FoodProgress = 0;
+        Turns = 0;
+        HungerPenalty = 0;
     }
 
     // прогресс движение в сторону еды

@@ -9,9 +9,12 @@ public class GameEngine
     public int GridSize {get; private set;}
     public GameStats Stats { get; private set; }
     private GameRenderer Renderer { get;}
+    private readonly Random random;
 
-    public GameEngine(int cellSize, int gridSize)
+    public GameEngine(int cellSize, int gridSize,
+        Random? random = null)
     {
+        this.random = random ?? Random.Shared;
         Renderer = new GameRenderer(cellSize, gridSize);
         Snake = new Snake(10, 10);
         Food = new Food(0, 0);
@@ -27,7 +30,6 @@ public class GameEngine
 
     private void SpawnFood()
     {
-        Random random = new Random();
         int x, y;
 
         do
@@ -101,7 +103,9 @@ public class GameEngine
             SpawnFood();
         }
 
-        if(Stats.StepsSinceFoods >= 150)
+        int maxStepsWithoutFood = 2 * (30 + 5 * Stats.Score);
+
+        if (Stats.StepsSinceFoods >= maxStepsWithoutFood)
         {
             IsGameOver = true;
             return;
