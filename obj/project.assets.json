@@ -83,11 +83,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/NeuronSnake.csproj",
-      "projectName": "NeuronSnake",
-      "projectPath": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/NeuronSnake.csproj",
+      "projectUniqueName": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuroTasks/NeuroTasks.csproj",
+      "projectName": "NeuroTasks",
+      "projectPath": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuroTasks/NeuroTasks.csproj",
       "packagesPath": "/home/icarus112/.nuget/packages/",
-      "outputPath": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/obj/",
+      "outputPath": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuroTasks/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/icarus112/.nuget/NuGet/NuGet.Config"

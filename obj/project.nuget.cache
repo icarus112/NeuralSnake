@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VZvVj61wRpa5L0sN8ZVydxjBXdOI2t46bx8rfsWiv8VaSc7aWUytsaFC1Dj3q1K9x7tDbFmktcSXAMhPxdKtfw==",
+  "dgSpecHash": "W441cvwnUSF4j+co/iW0U/U4aJEpkE+BAZXCQJxqIQeQl986zKOjUhZJhro6k0XjzeqoWGCcVrFo7WYZ8In8hQ==",
   "success": true,
-  "projectFilePath": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuronSnake/NeuronSnake.csproj",
+  "projectFilePath": "/media/icarus112/SharedUbuntuWin/studying/Методы оптимизации/NeuroTasks/NeuroTasks.csproj",
   "expectedPackageFiles": [
     "/home/icarus112/.nuget/packages/raylib-cs/8.1.0/raylib-cs.8.1.0.nupkg.sha512"
   ],
